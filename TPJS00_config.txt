@@ -1,0 +1,3 @@
+
+npm init -y   -> iniciando um package.json
+npm i -D typescript   -> instalado typescript package-lock.json e node_modules
