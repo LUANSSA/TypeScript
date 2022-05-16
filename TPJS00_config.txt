@@ -51,4 +51,11 @@ execute:
 npm run build   -> irá criar os arquivos build( .js) automaticamente, ou seja, cria uma rotina de build que executa o compilador
 
 
+em tsconfig.json:
+// "noEmitOnError": true,   -> noEmitOnError está comentado
+"noEmitOnError": true,   -> faz com que o compilador só crie o arquivo js de saida,
+                            na pasta build, se o arquivo TP raiz na pasta src, não tiver erro.
+                            
+"noEmitOnError": false,  -> faz com que o compilador crie o arquivo js de saida, nas pasta build,
+                            mesmo que o arquivo TP raiz na pasta src, esteja apontando erro.
 

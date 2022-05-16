@@ -1,3 +1,5 @@
 Inferência : "deduzier ou concluir". O próprio compilador do TS é capaz de deduzir muitos tipos,
 que permitem que o trabalho fique mais prático. Um exemplo disso é retorno de função. Qunado se realiza
 a tipagem dos argumentos, o próprio compilador TS deduz por padrão que o retorno é do mesmo tipo.
+
+Any: Tipagem padrão. É necessário definir tipo
