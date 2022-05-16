@@ -53,9 +53,14 @@ npm run build   -> irá criar os arquivos build( .js) automaticamente, ou seja, 
 
 em tsconfig.json:
 // "noEmitOnError": true,   -> noEmitOnError está comentado
-"noEmitOnError": true,   -> faz com que o compilador só crie o arquivo js de saida,
-                            na pasta build, se o arquivo TP raiz na pasta src, não tiver erro.
+"noEmitOnError": true,   -> faz com que o compilador só crie o arquivo .js de saida,
+                            na pasta build, se o arquivo .tp raiz na pasta src, não tiver erro.
                             
-"noEmitOnError": false,  -> faz com que o compilador crie o arquivo js de saida, nas pasta build,
-                            mesmo que o arquivo TP raiz na pasta src, esteja apontando erro.
+"noEmitOnError": false,  -> faz com que o compilador crie o arquivo .js de saida, nas pasta build,
+                            mesmo que o arquivo .tp raiz na pasta src, esteja apontando erro.
+
+em tsconfig.json:
+// "removeComments": true,   -> removeComments está comentado
+"removeComments": true,   -> Permite com que o processo de compilação e criação do arquivo de saida .js,
+                             ignore os comentários do arquivo raiz .ts
 
