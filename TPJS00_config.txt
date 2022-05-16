@@ -1,3 +1,54 @@
 
 npm init -y   -> iniciando um package.json
-npm i -D typescript   -> instalado typescript package-lock.json e node_modules
+
+npm install --save-dev typescript   -> instanlado typescript package-lock.json e node_modules
+npm i -D typescript   -> instanlado typescript package-lock.json e node_modules (forma resumida)
+
+npx tsc --init   -> npx executa alguns binários que podem estar instalados no projeto - cria o tsconfig.json
+tsconfig.json é utilizado para configurar as configurações do compilador do projeto
+
+criar pasta src
+criar pasta build
+criar .gitignore
+
+em .gitignore acrescentar:
+node_modules/
+build/
+
+node_modules é geralmente ignorado pelo git
+build geralmente é ignorado nos projetos
+
+em tsconfig.json:
+
+// "rootDir": "./",   -> rootDir comentado
+"rootDir": "./src",   -> faz com que a pasta raiz para aplicação seja src. rootDir é o pacote raiz da aplicação
+
+ // "outDir": "./",   -> output de saida comentado
+"outDir": "./build",   -> define o output da aplicação (saida) na pasta build 
+
+Ou seja, em src o arquivo exemplo.ts, que iremos criar, irá sair em build como exemplo.js
+
+criar um arquivo em src: exemplo.ts
+
+npx tsc   -> executa a compilação. Nesta etapa o compilador cria um arquivo output exemplo.js em build
+
+Para automatizar esse processo de ficar compilando e atualizando a pasta build
+vá em package.json:
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+e acrescente :
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+  },
+
+"build": "tsc",   -> acrescenta script de build e executa tsc
+
+execute:
+npm run build   -> irá criar os arquivos build( .js) automaticamente, ou seja, cria uma rotina de build que executa o compilador
+
+
+
