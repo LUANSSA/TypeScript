@@ -3,3 +3,8 @@ que permitem que o trabalho fique mais prático. Um exemplo disso é retorno de 
 a tipagem dos argumentos, o próprio compilador TS deduz por padrão que o retorno é do mesmo tipo.
 
 Any: Tipagem padrão. É necessário definir tipo
+
+TypeScript: linguagem de programação e também superSet, pois através do motor Dino, podemos executar
+o typescript diretamente. Essa linguagem é também um superSet pois permite um processo de compilação
+antes de ser gerado um arquivo js. O typescript se torna uma camada extra, que será compilada, e ai sim
+gerar o js
