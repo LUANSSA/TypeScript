@@ -67,9 +67,14 @@ console.log(animal.infoData());
 
 //private, protected, public
 
+//public é acessível de forma geral, dentro e fora da classe
+//private só pode ser acessado pela classe
+//protected pode ser acessado pela classe e pelas classes filhas
+
 class jogo {
     public nome: string;
     private empresa: string;
+    protected plataforma: string = "steam";
 
     constructor(nome: string, empresa: string){
         this.nome = nome;
@@ -79,6 +84,13 @@ class jogo {
     dizerEmpresa(){
         return `A empresa dona do jogo é ${this.empresa}`;
     }
+
+    setEmpresa(empresa: string){
+        this.empresa = empresa;
+    }
+    getEmpresa(){
+        return this.empresa;
+    }
 }
 
 const csgo = new jogo("Counter-Strike Global Offensive", "Valve");
@@ -86,3 +98,34 @@ console.log(csgo.nome);
 //Counter-Strike Global Offensive
 console.log(csgo.dizerEmpresa());
 //A empresa dona do jogo é Valve
+
+class perfilCsgoPlayer extends jogo{
+    public nomeJogador: string = "Luan";
+    super(nome: string, empresa: string){
+        this.nome = nome;
+        this.setEmpresa(empresa);
+    }
+
+    infoJogadorCsgo(){
+    return `nome: ${this.nomeJogador}\njogo: ${this.nome}`+
+            `\nplataforma: ${this.plataforma}\nempresa: ${this.getEmpresa()}`;
+    }
+}
+const perfilCsgoLuan = new perfilCsgoPlayer("CSGO", "Valve");
+
+console.log(perfilCsgoLuan);
+/*
+perfilCsgoPlayer {
+  plataforma: 'steam',
+  nome: 'CSGO',
+  empresa: 'Valve',
+  nomeJogador: 'Luan'
+}
+*/
+console.log(perfilCsgoLuan.infoJogadorCsgo());
+/*
+nome: Luan
+jogo: CSGO
+plataforma: steam
+empresa: Valve
+*/
