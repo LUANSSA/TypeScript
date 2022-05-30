@@ -74,11 +74,12 @@ console.log(animal.infoData());
 class jogo {
     public nome: string;
     private empresa: string;
-    protected plataforma: string = "steam";
+    protected plataforma: string;
 
-    constructor(nome: string, empresa: string){
+    constructor(nome: string, empresa: string, plataforma: string){
         this.nome = nome;
         this.empresa = empresa;
+        this.plataforma = plataforma;
     }
 
     dizerEmpresa(){
@@ -93,7 +94,7 @@ class jogo {
     }
 }
 
-const csgo = new jogo("Counter-Strike Global Offensive", "Valve");
+const csgo = new jogo("Counter-Strike Global Offensive", "Valve", "desktop");
 console.log(csgo.nome);
 //Counter-Strike Global Offensive
 console.log(csgo.dizerEmpresa());
@@ -111,12 +112,12 @@ class perfilCsgoPlayer extends jogo{
             `\nplataforma: ${this.plataforma}\nempresa: ${this.getEmpresa()}`;
     }
 }
-const perfilCsgoLuan = new perfilCsgoPlayer("CSGO", "Valve");
+const perfilCsgoLuan = new perfilCsgoPlayer("CSGO", "Valve", "PC");
 
 console.log(perfilCsgoLuan);
 /*
 perfilCsgoPlayer {
-  plataforma: 'steam',
+  plataforma: 'PC',
   nome: 'CSGO',
   empresa: 'Valve',
   nomeJogador: 'Luan'
@@ -126,6 +127,81 @@ console.log(perfilCsgoLuan.infoJogadorCsgo());
 /*
 nome: Luan
 jogo: CSGO
-plataforma: steam
+plataforma: PC
 empresa: Valve
 */
+
+
+interface IJogo {
+    nome: string;
+    descricao: string;
+    dizerNomeComDescricao(): string;
+}
+
+class jogoCartas extends jogo implements IJogo{
+    descricao: string;
+
+    constructor(nome: string, empresa: string, plataforma: string, descricao: string){
+        super(nome, empresa, plataforma);
+        this.descricao = descricao;
+    }
+    dizerNomeComDescricao(): string {
+        return `nome: ${this.nome}\ndescrição: ${this.descricao}`
+    }
+}
+const baralho = new jogoCartas("Baralho", "Qualquer", "Jogo de mão", "Jogo jogado a mão");
+console.log(baralho);
+/*
+jogoCartas {
+    nome: 'Baralho',
+    empresa: 'Qualquer',
+    plataforma: 'Jogo de mão',
+    descricao: 'Jogo jogado a mão'
+  }
+*/
+console.log(baralho.dizerNomeComDescricao());
+/*
+nome: Baralho
+descrição: Jogo jogado a mão
+
+*/
+
+//Usar interface ou type Alias ? Depende do padrão de projeto
+//Usando interface
+const obj: IJogo = {
+    nome: "Luague of Legends",
+    descricao: "Jogo para desktop e mobile",
+    dizerNomeComDescricao(){
+        return `nome: ${this.nome} descricao: ${this.descricao}`;
+    }
+}
+console.log(obj);
+/*
+{
+  nome: 'Luague of Legends',
+  descricao: 'Jogo para desktop e mobile',
+  dizerNomeComDescricao: [Function: dizerNomeComDescricao]
+}
+*/
+console.log(obj.dizerNomeComDescricao());
+//nome: Luague of Legends descricao: Jogo para desktop e mobile
+
+//OBS Interfaces em JS agrupam quando são escritas novamente
+
+interface Ia  {
+    nome: string;
+}
+interface Ia {
+    descricao: string
+
+}
+class iaAgrupado implements Ia {
+    nome = "Luan";
+    descricao = "A tem tanto nome como descricao";
+    dizerNomeDescricao(){
+        return `nome: ${this.nome} descricao: ${this.descricao}`;
+    }
+}
+const ia = new iaAgrupado();
+console.log(ia.dizerNomeDescricao());
+//nome: Luan descricao: A tem tanto nome como descricao
